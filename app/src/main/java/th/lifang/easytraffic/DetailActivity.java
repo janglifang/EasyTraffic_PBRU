@@ -4,13 +4,61 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class DetailActivity extends AppCompatActivity {
+
+    //Explicit
+    TextView titleTextView, detailTextView;
+    ImageView trafficImageView;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        //Bind Widget
+        bindWidget(); // ctrl + Enter จะสร้าง private void bindWidget ให้
+
+        showTitle();
+
+        showImage();
+
+        showDetail();
+
+    }  // onCreate
+
+    private void showDetail() {
+        String[] strDetail = getResources().getStringArray(R.array.detail);  //detail.xml
+        detailTextView.setText(strDetail[getIntent().getIntExtra("Detail",0)]);
+    }
+
+    private void showImage() {
+        int intImage = getIntent().getIntExtra("Image", R.drawable.traffic_01);
+        trafficImageView.setImageResource(intImage);
+    }
+
+    private void showTitle() {
+        //Recive from Intent
+        String strTitle = getIntent().getStringExtra("Title");
+        titleTextView.setText(strTitle);
+    }
+
+
+    private void bindWidget() {
+        titleTextView = (TextView) findViewById(R.id.txtTitleDetail);
+        detailTextView = (TextView) findViewById(R.id.txtDetail);
+        trafficImageView = (ImageView) findViewById(R.id.ImvTrafficDetail);
+    }
+
+    @Override
+    public View findViewById(int id) {
+        return super.findViewById(id);
     }
 
     @Override
@@ -34,4 +82,4 @@ public class DetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
+}//Main
