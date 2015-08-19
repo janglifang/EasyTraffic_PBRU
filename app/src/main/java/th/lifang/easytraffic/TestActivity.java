@@ -1,5 +1,8 @@
 package th.lifang.easytraffic;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +29,8 @@ public class TestActivity extends AppCompatActivity {
     private int radioAnInt;  //AnInt ได้มาจาก Ctrl + Space
     private int indexAnInt; //Check index ของ if ใน myModel
 
+    private int scoreAnInt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,22 +50,60 @@ public class TestActivity extends AppCompatActivity {
             Toast.makeText(TestActivity.this, "Please answer",Toast.LENGTH_SHORT).show();
             //กรณีที่ไม่มีการเลือกคำตอบให้แสดงประมาณ 4 วินาที ด้วยข้อความ Please answer
         } else {
+            checkScore();
             myModel();
         }
     }//clickAnswer
-    private void showAnswerDialog() {
 
-    }
+    private void showAnswerDialog() {
+        AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
+        objBuilder.setIcon(R.drawable.icon_myaccount);
+        objBuilder.setTitle("Score : ");
+        objBuilder.setMessage("Total Score :" + Integer.toString(scoreAnInt) + "scores");
+        objBuilder.setCancelable(false);  //undo ไม่สามารถทำงานได้
+        objBuilder.setNegativeButton("Play again", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                onStart();
+                choiceRadioGroup.clearCheck();
+                dialogInterface.dismiss();
+                //onClickListener แล้วกด Ctal + space
+            }
+        }); //กดปุ่มแรก แสดงว่าต้องการทำงานอีกครั้ง
+        objBuilder.setPositiveButton("Try agin", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent objIntent = new Intent(TestActivity.this, MainActivity.class);
+                startActivity(objIntent);
+                dialogInterface.dismiss();
+
+            }
+
+        });
+        objBuilder.show();
+    } //showAnswerDialog
+
     private void myModel() {
         if (indexAnInt == 9) {
             showAnswerDialog();
         } else {
+            checkScore();
+
             indexAnInt += 1;  //เปลี่ยนข้อ
             //Change View
             changeView(indexAnInt);
+            //Clear check
+            choiceRadioGroup.clearCheck();
 
         }
     } //myModel
+
+    private void checkScore() {
+        int[] intTrueAnswer = {1, 2, 3, 4, 1, 2, 3, 4, 1, 2};
+        if (radioAnInt==intTrueAnswer[indexAnInt]) {
+            scoreAnInt++;
+        }
+    }
 
     private void changeView(int anInt) {
         //change Question
@@ -125,6 +168,8 @@ public class TestActivity extends AppCompatActivity {
         imageInts[8] = R.drawable.traffic_09;
         imageInts[9] = R.drawable.traffic_10;
 
+        indexAnInt = 0;
+        scoreAnInt = 0;
         String[] strChoice = getResources().getStringArray(R.array.times1); //กำหนดตัวแรก mvc
 
         //just Start
