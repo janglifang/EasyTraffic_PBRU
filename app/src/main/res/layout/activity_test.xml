@@ -15,20 +15,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/test"
-            android:id="@+id/textView3"
+            android:id="@+id/txtQuestion"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/h2" />
 
         <ImageView
             android:layout_width="@dimen/image"
             android:layout_height="@dimen/image"
-            android:id="@+id/imageView2"
+            android:id="@+id/imvTrafficTest"
             android:layout_gravity="center_horizontal" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:background="#78ffffff"
+            android:padding="50dp"
+            android:id="@+id/ragChoice">  //กำหนดชื่อ
 
             <RadioButton
                 android:layout_width="wrap_content"
