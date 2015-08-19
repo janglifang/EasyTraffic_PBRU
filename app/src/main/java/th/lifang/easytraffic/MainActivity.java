@@ -24,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
         //create
         createListView();
     }
+
+    //RadioButton "Answer"
+    public void clickTest(View view) {
+    startActivity(new Intent(this, TestActivity.class));
+
+    }
+
+
     // CreateListView
     private void createListView() {
         final String[] strTitle = new String[20];
@@ -47,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         strTitle[17] = "จำกัดความเร็ว";
         strTitle[18] = "จำกัดความกว้าง 2.5 ม.";
         strTitle[19] = "จำกัดความสูง 5 ม.";
-
 
 
         final int[] intImage = {R.drawable.traffic_01,R.drawable.traffic_02,
@@ -89,10 +96,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-
-
-
 
 
     //method onOptionsItemSelected

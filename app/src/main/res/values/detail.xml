@@ -85,4 +85,16 @@
 
     </string-array>
 
+    <string-array name="question">
+        <item>1. สัญลักษณ์หมายถึง ? </item>
+        <item>2. ข้อใดตรงกับความซื่อสัตย์มากที่สุด </item>
+        <item>3. สัญลักษณ์หมายถึง ? </item>
+        <item>4. สัญลักษณ์หมายถึง ? </item>
+        <item>5. สัญลักษณ์หมายถึง ? </item>
+        <item>6. สัญลักษณ์หมายถึง ? </item>
+        <item>7. สัญลักษณ์หมายถึง ? </item>
+        <item>8. สัญลักษณ์หมายถึง ? </item>
+        <item>9. สัญลักษณ์หมายถึง ? </item>
+        <item>10. สัญลักษณ์หมายถึง ? </item>
+    </string-array>
 </resources>
