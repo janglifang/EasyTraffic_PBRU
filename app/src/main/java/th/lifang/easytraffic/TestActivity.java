@@ -87,7 +87,7 @@ public class TestActivity extends AppCompatActivity {
         if (indexAnInt == 9) {
             showAnswerDialog();
         } else {
-            checkScore();
+           // checkScore();
 
             indexAnInt += 1;  //เปลี่ยนข้อ
             //Change View
